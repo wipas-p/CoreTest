@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    image: dotnetcore
+    image: kong/coretest
     container_name: myapp
     ports:
       - "8888:8888"
