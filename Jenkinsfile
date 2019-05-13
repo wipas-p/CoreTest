@@ -1,5 +1,4 @@
 def GIT_URL="https://github.com/wipas-p/CoreTest.git"
-def GIT_CRED_ID="gitlab_login"
 
 pipeline {
     agent any
@@ -9,13 +8,11 @@ pipeline {
       steps {
         script {
           echo "Checkout SCM"
-          sh "rm -rf DemoSpringBoot"
           git branch: 'master', url: 'https://github.com/wipas-p/CoreTest.git'
           // withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITLAB_User', passwordVariable: 'GITLAB_Password']]) {
           //   sh "git clone https://${GITLAB_User}:${GITLAB_Password}@${GIT_URL}"
         }
       }
-    }
     }
 
     // stage ('Compile Code') {
@@ -40,6 +37,14 @@ pipeline {
       steps {
           echo "Deploy DEV"
           }
+    }
+    
+    stage ('Test') {
+      steps {
+          echo "Testing"
+          }
+    }    
+    
     }
     
 }
