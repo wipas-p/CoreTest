@@ -36,6 +36,7 @@ pipeline {
     stage ('Deploy DEV') {
       steps {
           echo "Deploy DEV"
+          sh "sudo docker-compose up -d"
           }
     }
     
